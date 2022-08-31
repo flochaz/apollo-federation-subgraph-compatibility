@@ -1,6 +1,8 @@
 services:
   router:
     image: ghcr.io/apollographql/router:v0.14.0
+    environment:
+      - APOLLO_ROUTER_LOG=debug
     volumes:
       - ./router.yaml:/dist/config/router.yaml
       - ./supergraph.graphql:/dist/config/supergraph.graphql
@@ -12,6 +14,10 @@ services:
     ports:
       - 4003:4003
   users:
-    image: apollo-federation-implementations/users
+    environment:
+      - APOLLO_SERVER_LOG=debug
+    # image: apollo-federation-implementations/users
+    build:
+      context: subgraphs/users
     ports:
       - 4002:4002

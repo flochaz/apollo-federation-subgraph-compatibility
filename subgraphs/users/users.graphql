@@ -4,3 +4,7 @@ type User @key(fields:"email") {
   totalProductsCreated: Int
   yearsOfEmployment: Int!
 }
+
+extend type Query {
+  listUsers: [User]
+}

@@ -28,5 +28,40 @@
         "!Select",
         "!Split"
     ],
-    "java.format.settings.url": "eclipse-formatter.xml"
+    "java.format.settings.url": "eclipse-formatter.xml",
+    "serverlessConsole.services": [
+        {
+            "type": "cloudformation",
+            "title": "ProductService",
+            "timeOffsetInMs": 0,
+            "awsProfile": "federation",
+            "stacks": [
+                {
+                    "region": "us-east-1",
+                    "stackName": "ProductsServiceStack",
+                    "stage": "dev"
+                }
+            ]
+        },
+        {
+            "type": "custom",
+            "title": "ProdService",
+            "timeOffsetInMs": 0,
+            "awsProfile": "federation",
+            "items": [
+                {
+                    "title": "/aws/lambda/ProductsServiceStack-lambdaResolver29EDA011-PtORgVvcUkYW",
+                    "tabs": [
+                        {
+                            "region": "eu-west-3",
+                            "title": "dev",
+                            "logs": "/aws/lambda/ProductsServiceStack-lambdaResolver29EDA011-PtORgVvcUkYW"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "serverlessConsole.autoRefreshInterval": 5000,
+    "serverlessConsole.groupPerRequest": false
 }

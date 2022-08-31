@@ -14,8 +14,26 @@ const users = [
 
 const typeDefs = gql(readFileSync("users.graphql", "utf-8"));
 
+class BasicLogging {
+  requestDidStart({queryString, parsedQuery, variables}) {
+    cString || print(parsedQuery);
+    console.log(query);
+    console.log(variables);
+  }
+
+  willSendResponse({graphqlResponse}) {
+    console.log(JSON.stringify(graphqlResponse, null, 2));
+  }
+}
+
 const resolvers = {
+  Query: {
+      product: () => {
+        return users;
+      },
+  },
   User: {
+    
     /** @type {(reference: import("./typings").UserReference) => any} */
     __resolveReference: (reference) => {
       return users.find((u) => u.email == reference.email);
@@ -23,7 +41,7 @@ const resolvers = {
   },
 };
 const server = new ApolloServer({
-  schema: buildSubgraphSchema({ typeDefs, resolvers }),
+  schema: buildSubgraphSchema({ typeDefs, resolvers, extensions: new BasicLogging() }),
 });
 server
   .listen({ port })

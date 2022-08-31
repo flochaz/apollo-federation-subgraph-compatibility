@@ -1,5 +1,5 @@
-import { expect as expectCDK, matchTemplate, MatchStyle } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
+import { expect as expectCDK, matchTemplate, MatchStyle } from 'aws-cdk-lib/assert';
+import * as cdk from 'aws-cdk-lib';
 import { ProductsServiceStack } from '../src/products-service-stack';
 
 test('Empty Stack', () => {

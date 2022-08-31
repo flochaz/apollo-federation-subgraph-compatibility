@@ -1,12 +1,13 @@
-import * as cdk from '@aws-cdk/core';
-import * as appsync from '@aws-cdk/aws-appsync';
-import * as lambda from '@aws-cdk/aws-lambda-nodejs';
-import {Tracing} from '@aws-cdk/aws-lambda';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
+import * as appsync from '@aws-cdk/aws-appsync-alpha';
+import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Tracing } from 'aws-cdk-lib/aws-lambda';
 
 import { join } from 'path';
 
 export class ProductsServiceStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const api = new appsync.GraphqlApi(this, 'Api', {
